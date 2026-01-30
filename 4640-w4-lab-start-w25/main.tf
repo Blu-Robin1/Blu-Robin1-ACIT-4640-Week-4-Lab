@@ -56,8 +56,7 @@ resource "aws_vpc" "web" {
 resource "aws_subnet" "web" {
   vpc_id     = aws_vpc.web.id
   cidr_block = "10.0.1.0/24"
-  #"us-west-2a" <- icase error
-  availability_zone  = data.aws_availability_zones.available.names[0]
+  availability_zone  = "us-west-2a"
   map_public_ip_on_launch = "true"
 
 
