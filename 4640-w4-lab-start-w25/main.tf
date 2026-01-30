@@ -188,7 +188,7 @@ resource "aws_instance" "web" {
   # add vpc security group 
 
   subnet_id = aws_subnet.web.id
-  vpc_security_group_ids = web.vpc_security_group_ids
+  vpc_security_group_ids = aws_security_group.web.id
   tags = {
     Name = "Web"
     Project_name = local.project_name
