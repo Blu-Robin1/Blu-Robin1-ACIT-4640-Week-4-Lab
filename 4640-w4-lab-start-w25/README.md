@@ -29,4 +29,6 @@ terraform destroy
 ### Cloud init config
 ```bash
 ⁨ssh-keygen -t ed25519 -f ~/.ssh/nathan-lab-wk4
+ssh -i ~/.ssh/nathan-lab-wk4 web@54.244.58.143
 ```
+
