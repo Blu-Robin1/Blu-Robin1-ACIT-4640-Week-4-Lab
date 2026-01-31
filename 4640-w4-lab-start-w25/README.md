@@ -10,8 +10,17 @@ Sources:
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc#enable_dns_hostnames-1
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
 
-## Config commands
+## Terraform commands explained
 
+⁨`General setup
+1. Creating ssh keypair `⁩⁨ssh-keygen -t ed25519 -f ~/.ssh/nathan-lab-wk4⁨`
+2. Clone the starter files into linux environment
+3. Edit the main.tf with the necessary commands, referencing terraform docs
+ 
+`⁩terraform init⁨` - prepares the working directory
+`⁩terraform validate⁨` - checks if the configuration is valid
+`⁩terraform plan⁨` - show changes to the current configuration
+`⁩terraform apply` - create or update the infrastructure
 ## Terraform commands
 - ```bash
   terraform init
