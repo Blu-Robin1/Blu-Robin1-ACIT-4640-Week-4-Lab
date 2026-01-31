@@ -13,6 +13,19 @@ Sources:
 ## Config commands
 
 ## Terraform commands
+- ```bash
+  terraform init
+  terraform validate
+  terraform plan
+  terraform apply
+  ```
+
+if error
+```
+terraform destroy
+```
+
+  
 ### Cloud init config
 ```bash
 ⁨ssh-keygen -t ed25519 -f ~/.ssh/nathan-lab-wk4

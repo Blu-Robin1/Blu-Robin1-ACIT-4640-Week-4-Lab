@@ -87,10 +87,7 @@ resource "aws_route_table" "web" {
 
   vpc_id  = aws_vpc.web.id
 
-  route {
-    cidr_block = "10.0.1.0/24"
-    gateway_id = aws_internet_gateway.web-gw.id
-  }
+  
   tags = {
     Name = "web-route"
     Project_name = local.project_name
@@ -100,11 +97,12 @@ resource "aws_route_table" "web" {
 # add route to to route table
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route
 resource "aws_route" "default_route" {
+  
   route_table_id         = aws_route_table.web.id
   destination_cidr_block = "0.0.0.0/0"
   gateway_id = aws_internet_gateway.web-gw.id
 
-  # add gateway id
+
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association
@@ -180,15 +178,14 @@ resource "aws_instance" "web" {
   # add user datat for cloud-config file in scripts directory
   # https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info
   instance_type = "t3.micro"
-  ami = data.aws_ami.debian
-
+  ami = data.aws_ami.debian.id
 
   user_data = file("${path.root}/scripts/cloud-config.yaml")
 
   # add vpc security group 
 
   subnet_id = aws_subnet.web.id
-  vpc_security_group_ids = aws_security_group.web.id
+  vpc_security_group_ids = [aws_security_group.web.id]
   tags = {
     Name = "Web"
     Project_name = local.project_name
